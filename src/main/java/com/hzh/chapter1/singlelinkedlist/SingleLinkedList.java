@@ -1,5 +1,6 @@
-package com.hzh.chapter1.linkedlist;
+package com.hzh.chapter1.singlelinkedlist;
 
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.REUtil;
 import org.junit.Test;
 
 /**
@@ -75,7 +76,6 @@ public class SingleLinkedList {
      * 显示链表[遍历]
      */
     public void showList() {
-        System.out.println("---------------------------");
         //判断链表是否为空
         if (head.next == null) {
             throw new RuntimeException("list is empty");
@@ -87,6 +87,7 @@ public class SingleLinkedList {
             temp = temp.next;
             System.out.println(temp);
         }
+        System.out.println("---------------------------");
     }
 
     /**
@@ -110,6 +111,61 @@ public class SingleLinkedList {
             temp = temp.next;
         }
         throw new RuntimeException("找不到编号");
+    }
+
+    /**
+     * 该链表有头节点, 头节点不算
+     * @return
+     */
+    public int getLength() {
+        HeroNode temp = head;
+        int l = 0;
+        while (temp.next != null) {
+            l++;
+            temp = temp.next;
+        }
+        return l;
+    }
+
+    /**
+     * 倒数第k个节点
+     * @param k
+     * @return
+     */
+    public HeroNode getKthFromTheBottom(int k) {
+        if(k <= 0 || k > getLength()) throw new IndexOutOfBoundsException("k不在范围");
+        HeroNode temp = head.next;
+        int countTemp = 1;
+        while (temp != null) {
+            if(countTemp == getLength() + 1 - k) {
+                return temp;
+            }
+            temp = temp.next;
+            countTemp++;
+        }
+        return null;
+    }
+
+    /**
+     * 快慢指针: 我们把一个链表看成一个跑道，假设a的速度是b的两倍，那么当a跑完全程后，b刚好跑一半，以此来达到找到中间节点的目的。
+     *
+     * 题中: 两个指针, 第一个先走k步, 第二个一起走, 即第一个k时第二个=1, 当第一个走完了, 第二个即为倒数第k个
+     * @param k
+     * @return
+     */
+    public HeroNode getKthFromTheBottom2(int k) {
+        if(k <= 0 || k > getLength()) throw new IndexOutOfBoundsException("k不在范围");
+        HeroNode temp = head.next;
+        HeroNode resultNode = head;
+        int count = 1;
+        while (temp != null) {
+            if (count >= k) {
+                resultNode = resultNode.next;
+            }
+            temp = temp.next;
+            count++;
+        }
+        return resultNode;
     }
 
 
