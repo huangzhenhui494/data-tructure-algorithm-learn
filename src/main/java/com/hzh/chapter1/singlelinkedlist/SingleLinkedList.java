@@ -2,6 +2,8 @@ package com.hzh.chapter1.singlelinkedlist;
 
 import org.junit.Test;
 
+import java.util.Stack;
+
 /**
  * @description:
  * @Author huangzhenhui
@@ -228,6 +230,45 @@ public class SingleLinkedList {
         head.next = preNode;
     }
 
+    /**
+     * 反向遍历打印
+     */
+    public void traverseFlashbackPrint() {
+    }
+
+    /**
+     * 递归反向打印
+     */
+    public void recursionFlashbackPrint() {
+        if(head.next == null) throw new RuntimeException("链表为空");
+        recursionPrint(head.next);
+    }
+
+    private void recursionPrint(HeroNode hero) {
+        if (hero.next != null) {
+            recursionPrint(hero.next);
+        }
+        System.out.println(hero);
+    }
+
+    /**
+     * 栈打印
+     */
+    public void stackFlashbackPrint() {
+        Stack<HeroNode> stack = new Stack<HeroNode>();
+        HeroNode cur = head.next;
+        // 将链表的所有节点压入栈
+        while (cur != null) {
+            stack.push(cur);
+            cur = cur.next; // cur后移
+        }
+
+        // pop出栈
+        while (stack.size() > 0) {
+            System.out.println(stack.pop()); // 先进后出
+        }
+
+    }
 
     @Test
     public void test1() {
@@ -286,5 +327,39 @@ public class SingleLinkedList {
         singleLinkedList.showList();
         singleLinkedList.del(11);
         singleLinkedList.showList();
+    }
+
+    public void mergeByOrder(SingleLinkedList singleLinkedList, SingleLinkedList singleLinkedList1) {
+        HeroNode head1 = singleLinkedList.head;
+        HeroNode head2 = singleLinkedList1.head;
+        if (head1.next != null || head2.next != null) {
+            if(head1.next == null) {
+                head = head2;
+                return;
+            }
+            if (head2.next == null) {
+                head = head1;
+                return;
+            }
+            // 第二个插入到第一个
+            HeroNode temp2 = head2.next;
+            HeroNode temp1 = head1;
+            HeroNode next2 = null;  // 临时存储temp2的下一个
+            while (temp2 != null) {
+                next2 = temp2.next;
+                while (temp1.next != null) {
+                    if (temp1.next.no >= temp2.no) {
+                        temp2.next = temp1.next;
+                        temp1.next = temp2;
+
+                        break;
+                    }
+                    temp1 = temp1.next;
+                }
+                temp2 = next2;
+            }
+        } else {
+            throw new RuntimeException("链表均为空");
+        }
     }
 }

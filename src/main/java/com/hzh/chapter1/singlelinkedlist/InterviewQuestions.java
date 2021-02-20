@@ -45,11 +45,17 @@ public class InterviewQuestions {
         singleLinkedList.addByOrder(hero9);
     }
 
+    /**
+     * 求单链表中有效节点的个数
+     */
     @Test
     public void test1() {
         System.out.println(singleLinkedList.getLength());
     }
 
+    /**
+     * 查找单链表中的倒数第k个节点
+     */
     @Test
     public void test2() {
         int k = 9;
@@ -58,6 +64,9 @@ public class InterviewQuestions {
         System.out.println(singleLinkedList.getKthFromTheBottom2(k));
     }
 
+    /**
+     * 单链表的反转
+     */
     @Test
     public void test3() {
         singleLinkedList.showList();
@@ -67,14 +76,57 @@ public class InterviewQuestions {
         singleLinkedList.showList();
     }
 
+    /**
+     * 从尾到头打印单链表  要求方式1:反向遍历, 方式2: stack栈
+     */
     @Test
     public void test4() {
-
+        // 反向遍历打印
+        singleLinkedList.traverseFlashbackPrint();
+        //
+        singleLinkedList.recursionFlashbackPrint();
+        // stack
+        singleLinkedList.stackFlashbackPrint();
     }
 
+    /**
+     * 合并两个有序的单链表, 合并之后的链表依然有序
+     */
     @Test
     public void test5() {
+        singleLinkedList = new SingleLinkedList();
+        // 先创建几个节点
+        HeroNode hero1 = new HeroNode(1, "柴进", "小旋风");
+        HeroNode hero2 = new HeroNode(3, "卢俊义", "玉麒麟");
+        HeroNode hero3 = new HeroNode(5, "索超", "急先锋");
+        HeroNode hero4 = new HeroNode(8, "武松", "行者");
+        HeroNode hero9 = new HeroNode(9, "鲁智深", "花和尚");
 
+        // 创建链表
+        singleLinkedList = new SingleLinkedList();
+        // 加入
+        singleLinkedList.addByOrder(hero1);
+        singleLinkedList.addByOrder(hero2);
+        singleLinkedList.addByOrder(hero3);
+        singleLinkedList.addByOrder(hero4);
+        singleLinkedList.addByOrder(hero9);
+
+
+        SingleLinkedList singleLinkedList1 = new SingleLinkedList();
+        // 先创建几个节点
+        HeroNode hero11 = new HeroNode(2, "柴进2", "小旋风2");
+        HeroNode hero12 = new HeroNode(4, "卢俊义2", "玉麒麟2");
+        HeroNode hero13 = new HeroNode(5, "索超2", "急先锋2");
+        HeroNode hero14 = new HeroNode(6, "武松2", "行者2");
+        HeroNode hero19 = new HeroNode(9, "鲁智深2", "花和尚2");
+        // 加入
+        singleLinkedList1.addByOrder(hero11);
+        singleLinkedList1.addByOrder(hero12);
+        singleLinkedList1.addByOrder(hero13);
+        singleLinkedList1.addByOrder(hero14);
+        singleLinkedList1.addByOrder(hero19);
+        singleLinkedList.mergeByOrder(singleLinkedList, singleLinkedList1);
+        singleLinkedList.showList();
     }
 
 
