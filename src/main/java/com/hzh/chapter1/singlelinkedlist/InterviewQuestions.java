@@ -45,7 +45,6 @@ public class InterviewQuestions {
         singleLinkedList.addByOrder(hero9);
     }
 
-
     @Test
     public void test1() {
         System.out.println(singleLinkedList.getLength());
@@ -61,7 +60,11 @@ public class InterviewQuestions {
 
     @Test
     public void test3() {
-
+        singleLinkedList.showList();
+        singleLinkedList.reverse();
+        singleLinkedList.showList();
+        singleLinkedList.iteratorReverse();
+        singleLinkedList.showList();
     }
 
     @Test
