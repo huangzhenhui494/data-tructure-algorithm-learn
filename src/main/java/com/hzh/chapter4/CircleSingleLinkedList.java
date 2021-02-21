@@ -69,9 +69,26 @@ public class CircleSingleLinkedList {
         }
         // 创建要给辅助指针, 帮助完成小孩出圈
         Boy helper = first;
-        first = helper.getNext();
-
-
-
+        // ① 需要创建一个辅助指针(变量)helper, 事先应该指向环形链表的最后这个节点
+        while (helper.getNext() != first) {
+            helper = helper.getNext();
+        }
+        // ② 小孩时, 先让first和helper移动 start-1 次
+        for(int i = 0; i < start - 1; i++) {
+            first = first.getNext();
+            helper = helper.getNext();
+        }
+        // ③ 报数时, 让first和helper指针同时移动 m-1 次, 然后出圈
+        while (helper != first) {
+            for(int i = 0; i < count - 1; i++) {
+                first = first.getNext();
+                helper = helper.getNext();
+            }
+            // 这时first指向的节点, 就是要出圈的小孩节点
+            System.out.println(first);
+            first = first.getNext();
+            helper.setNext(first);
+        }
+        System.out.println(first);
     }
 }

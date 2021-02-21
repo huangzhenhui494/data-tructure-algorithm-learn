@@ -27,6 +27,7 @@ public class Josephu {
      */
     @Test
     public void test1() {
+        linkedList.countBoy(1,2,5);
     }
 
 }
