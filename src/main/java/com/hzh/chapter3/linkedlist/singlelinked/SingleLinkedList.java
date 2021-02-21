@@ -1,4 +1,4 @@
-package com.hzh.chapter1.singlelinkedlist;
+package com.hzh.chapter3.linkedlist.singlelinked;
 
 import org.junit.Test;
 
@@ -192,16 +192,16 @@ public class SingleLinkedList {
         if(head.next == null || head.next.next == null) return;
         // 将每个节点插入到第一个节点
         HeroNode cur = head.next;
-        HeroNode next = null;
-        HeroNode temp = new HeroNode(0, "", "");
+        HeroNode next = null;   // 定义一个辅助的指针(变量)
+        HeroNode reverseHead = new HeroNode(0, "", "");
         while (cur != null) {
-            next = cur.next;        // 先暂时保存当前节点的下一个节点，因为后面需要使用
-            cur.next = temp.next;   // 新节点插入到头节点后面, 即下一个节点为头节点后面的
-            temp.next = cur;        // 新节点插入到头节点后面, 即temp下一个节点为cur
-            cur = next;             // 让cur后移
+            next = cur.next;               // 先暂时保存当前节点的下一个节点，因为后面需要使用
+            cur.next = reverseHead.next;   // 新节点插入到头节点后面, 即下一个节点为头节点后面的
+            reverseHead.next = cur;        // 新节点插入到头节点后面, 即temp下一个节点为cur
+            cur = next;                    // 让cur后移
         }
         // 将head.next指向temp.next
-        head.next = temp.next;
+        head.next = reverseHead.next;
     }
 
     /**

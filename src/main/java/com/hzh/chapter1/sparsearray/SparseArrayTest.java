@@ -1,9 +1,6 @@
 package com.hzh.chapter1.sparsearray;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.TopLevelAttribute;
-
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -43,7 +40,7 @@ public class SparseArrayTest {
         int[][] sparseArr2 = arrDeserialization();
         // 稀疏数组转原数组
         int[][] originArr2 = convertToOriArr(sparseArr2);
-        for (int[] ints : originArr2) {
+        for  (int[] ints : originArr2) {
             System.out.println(Arrays.toString(ints));
         }
 

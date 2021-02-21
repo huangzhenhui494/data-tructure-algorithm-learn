@@ -1,4 +1,4 @@
-package com.hzh.chapter1.queue;
+package com.hzh.chapter2.queue;
 
 /**
  * @description: 使用数组模拟队列写一个ArrayQueue类

@@ -1,4 +1,4 @@
-package com.hzh.chapter1.singlelinkedlist;
+package com.hzh.chapter3.linkedlist.singlelinked;
 
 /**
  * @description:

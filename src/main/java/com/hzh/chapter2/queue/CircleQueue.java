@@ -1,4 +1,4 @@
-package com.hzh.chapter1.queue;
+package com.hzh.chapter2.queue;
 
 import java.util.Arrays;
 
