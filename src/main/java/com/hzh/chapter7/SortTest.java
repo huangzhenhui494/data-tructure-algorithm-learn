@@ -9,14 +9,19 @@ import java.util.Arrays;
  */
 public class SortTest {
 
-    private static int[] arr = {3,10,11,1,7,2,3,5,6,9,3,4,9,2,8,1,4,7};
+//    private static int[] arr = {3,10,11,1,7,2,3,5,6,9,3,4,9,2,8,1,4,7};
 //    private static int[] arr = {5,6,1,2,4,3,7,9,8,0};
+    private static int[] arr = {6,1,2,7,9,3,4,5,10,8};
 
     public static void main(String[] args) {
 //        bubbleSort(arr);
 //        selectSort(arr);
 //        insertSort(arr);
-        shellSort();
+//        shellSort(arr);
+        quickSort(arr, 0, arr.length - 1);
+
+
+
         System.out.println(Arrays.toString(arr));
     }
 
@@ -33,6 +38,7 @@ public class SortTest {
             boolean isSort = true;
             for(int j = 0; j < i; j++) {
                 if(arr[j] > arr[j+1]) {
+                    // 存在需要交换的值则需要进入下一轮, 本轮不需要交换则已经排序完成
                     isSort = false;
                     swap(arr, j, j+1);
                 }
@@ -42,6 +48,7 @@ public class SortTest {
     }
 
     /**
+     *
      * 选择排序
      * 1 首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置
      * 2 再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。
@@ -53,7 +60,7 @@ public class SortTest {
             for(int j = i + 1; j < arr.length; j++) {
                 minIndex = arr[j] < arr[minIndex] ? j : minIndex;
             }
-            swap(arr, i, minIndex   );
+            swap(arr, i, minIndex);
         }
     }
 
@@ -93,7 +100,7 @@ public class SortTest {
      *
      *   5,6,1,2,4 3,7,9,8,0
      */
-    private static void shellSort() {
+    private static void shellSort(int[] arr) {
         for(int g = arr.length / 2; g > 0; g /= 2) {  // 当g=1时, 整除2=0
             // 从增量开始遍历, 按照步长比较
             for(int i = g; i < arr.length; i++) {
@@ -109,6 +116,52 @@ public class SortTest {
             }
         }
     }
+
+    /**
+     * 快速排序  https://blog.csdn.net/shujuelin/article/details/82423852
+     *          https://blog.csdn.net/lkp1603645756/article/details/85008715
+     * 1 从数列中挑出一个元素，称为 “基准”（pivot）;
+     * 2 重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。
+     *   在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；
+     * 3 递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序；
+     */
+    private static void quickSort(int[] arr, int left, int right) {
+        if (left < right) {
+            int p = findPivot(arr, left, right);
+            quickSort(arr, left, p-1);
+            quickSort(arr, p + 1,right);
+        }
+    }
+
+    /**
+     * 快速排序找基准值
+     * @param arr
+     * @param left
+     * @param right
+     * @return
+     */
+    private static int findPivot(int[] arr, int left, int right) {
+
+        return 1;
+    }
+
+    /**
+     * 归并排序 O(n log n)
+     * 1 申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列;
+     * 2 设定两个指针，最初位置分别为两个已经排序序列的起始位置;
+     * 3 比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置;
+     * 4 重复步骤 3 直到某一指针达到序列尾;
+     *
+     * 将另一序列剩下的所有元素直接复制到合并序列尾。
+     * @param arr
+     */
+    private static void mergeSort(int[] arr) {
+        // 6 1 2 7 9 3 4 5 10 8
+    }
+
+
+
+
 
     /**
      * 交换数组中的元素
