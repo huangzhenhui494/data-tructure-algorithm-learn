@@ -1,7 +1,9 @@
 package com.hzh.chapter7;
 
 import org.junit.Test;
+import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties;
 
+import javax.validation.constraints.Min;
 import java.util.Arrays;
 
 /**
@@ -11,9 +13,9 @@ import java.util.Arrays;
  */
 public class SortTest {
 
-    private static int[] arr = {3,10,11,-1,1,7,2,-5,3,5,-2,0,1,2,5,-1,2,-5,-11,24,0,7,-7,6,9,3,4,9,2,8,0,1,4,7};
-//    private static int[] arr = {5,6,1,2,4,3,7,9,8,0};
-//    private static int[] arr = {6,1,2,7,9,3,4,5,10,8};
+//    private static int[] arr = {3,10,11,-1,1,7,2,-5,3,5,-2,0,1,2,5,-1,2,-5,-11,24,0,7,-7,6,9,3,4,9,2,8,0,1,4,7};
+//    private static int[] arr = {5,6,1,2,4,3,7,9};
+    private static int[] arr = {6,1,2,7,9,3,4,5,10,8,2,4,5,6,10,2,22,33};
     private static int[] testTimeArr;
 
     static {
@@ -30,7 +32,9 @@ public class SortTest {
 //        insertSort(arr);
 //        shellSwapSort(arr);
 //        shellExchangeIndexSort(arr);
-        quickSort(arr, 0, arr.length - 1);
+//        quickSort(arr, 0, arr.length - 1);
+//        mergeSort(arr, 0, arr.length - 1, new int[arr.length]);
+        radixSort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
@@ -92,6 +96,26 @@ public class SortTest {
         System.out.println("结束");
         long end = System.currentTimeMillis();
         System.out.println(end - start);  // 800w 864
+    }
+
+    @Test
+    public void mergeSortTest() {
+        System.out.println("开始");
+        long start = System.currentTimeMillis();
+        mergeSort(testTimeArr, 0, testTimeArr.length - 1, new int[testTimeArr.length]);
+        System.out.println("结束");
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);  // 800w 1362
+    }
+
+    @Test
+    public void radixSortTest() {
+        System.out.println("开始");
+        long start = System.currentTimeMillis();
+        radixSort(testTimeArr);
+        System.out.println("结束");
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);  // 800w 965
     }
 
 
@@ -252,10 +276,114 @@ public class SortTest {
      * 将另一序列剩下的所有元素直接复制到合并序列尾。
      * @param arr
      */
-    private static void mergeSort(int[] arr) {
-        // 6 1 2 7 9 3 4 5 10 8
+    public static void mergeSort(int[] arr, int left, int right, int[] temp) {
+        if (left < right) {
+            int mid = (right +left) / 2;
+            // 向左递归进行分解
+            mergeSort(arr, left, mid, temp);
+            // 向右递归进行分解
+            mergeSort(arr, mid + 1, right, temp);
+            // 合并
+            merge(arr, left, mid, right, temp);
+        }
+    }
 
+    /**
+     * 将另一序列剩下的所有元素直接复制到合并序列尾。
+     * @param arr   排序的原始数组
+     * @param left  左边有序序列的初始索引
+     * @param mid   中间索引
+     * @param right 右边索引
+     * @param temp  做中转的数组
+     */
+    private static void merge(int[] arr, int left, int mid, int right, int[] temp) {
 
+        int i = left;     // 左边待合并数组的起始索引
+        int j = mid + 1;  // 右边待合并数组的起始索引
+        int t = 0;        // 临时数组的索引
+
+        // 比较, 小的那个移动到临时数组
+        while (i <= mid && j <= right) {
+            if(arr[i] <= arr[j]) {
+                temp[t] = arr[i];
+                t += 1;
+                i += 1;
+            } else {
+                temp[t] = arr[j];
+                t += 1;
+                j += 1;
+            }
+        }
+        // 如果还有数据, 按顺序移动过去
+        while (i <= mid) {
+            temp[t] = arr[i];
+            i += 1;
+            t += 1;
+        }
+        while (j <= right) {
+            temp[t] = arr[j];
+            t += 1;
+            j += 1;
+        }
+        // 合并
+        t = 0;
+        while (left <= right) {
+            arr[left] = temp[t];
+            t += 1;
+            left += 1;
+        }
+
+    }
+
+    /**
+     * 基数排序
+     *
+     * 二维数组, 为了防止在放入数的时候, 数据溢出, 则每一个一维数组(桶), 大小定为arr.length
+     * 使用空间换时间的经典算法
+     * 负数的话分开, 取负数后再取逆序  十位 (arr[i] / 10) % 10
+     * 数据量太大可能堆溢出
+     */
+    public static void radixSort(int[] arr) {
+
+        // 得到数组中最大数的位数
+        int max = arr[0]; // 假设第一数就是最大数
+        for(int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        // 得到最大数是几位数
+        int maxLength = (max + "").length();
+
+        // 定义一个二维数组, 表示10个桶
+        int[][] bucket = new int[10][arr.length];
+        // 为了记录每个同种, 实际存放了多少个数据, 我们定义一个一维数组来记录每个桶的每次放入的数据个数
+        int[] elementCounts = new int[10];
+
+        for(int j = 0; j < maxLength; j++) {
+            // 第一轮, 对每个元素个位数进行排序后取出, 第二轮对每个元素的十位数排序放入桶后取出, ...
+            for(int i = 0; i < arr.length; i++) {
+                int digitOfElement = arr[i] / (int) Math.pow(10, j) % 10;
+                // 放入到对应的桶中
+                bucket[digitOfElement][elementCounts[digitOfElement]] = arr[i];
+                elementCounts[digitOfElement] += 1;
+            }
+            // 按照这个桶的顺序(一维数组的下标一次取出数据, 放入原来数组)
+            int arrIndex = 0;
+            // 遍历每一个桶, 并将桶中是数量, 放入到原数组
+            for(int k = 0; k < elementCounts.length; k++) {
+                // 如果桶中有数据,
+                if (elementCounts[k] != 0) {
+                    // 循环该桶即第k个桶(即第k个一维数组), 放入
+                    for(int l = 0; l < elementCounts[k]; l++) {
+                        arr[arrIndex] = bucket[k][l];
+                        arrIndex++;
+                    }
+                }
+                // 每一轮处理后, 需要将每个elementCounts[k] = 0
+                elementCounts[k] = 0;
+            }
+        }
     }
 
     /**
