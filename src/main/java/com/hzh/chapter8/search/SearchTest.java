@@ -1,4 +1,4 @@
-package com.hzh.chapter8;
+package com.hzh.chapter8.search;
 
 import org.junit.Test;
 

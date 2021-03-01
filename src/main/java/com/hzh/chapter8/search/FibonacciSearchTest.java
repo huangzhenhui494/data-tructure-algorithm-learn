@@ -43,7 +43,7 @@ public class FibonacciSearchTest {
         }
         // 左右查找
         while (low <= high) {
-            int mid = low + F[k - 1] - 1;   // mid左边长度为low + F[k - 1] - 1, mid的索引为 low + F[k - 1] - 1
+            int mid = low + F[k - 1] - 1;   // mid左边长度为F[k - 1] - 1, mid的索引为 low + F[k - 1] - 1
             if(value < temp[mid]) {   // 左边长度为 low + F[k - 1] - 1 = low + F[k - 2] + F[k - 3] - 1  ==>  F[k - 1] - 1 =
                                       // F[k - 2] -1 + 1 + F[k - 3] - 1  此时的索引为 min = low + F[k - 1] - 1 =  F[k - 2] -1 即k--
                 high = mid - 1;
