@@ -41,11 +41,11 @@ public class FibonacciSearchTest {
         for (int i = arr.length; i < F[k] - 1; i++) {
             temp[i] = arr[arr.length - 1];
         }
-        // 左右查找
+        // 左右查找, 下面的k-=1和k-=2,其实就是继续查找下一次的黄金分割点
         while (low <= high) {
             int mid = low + F[k - 1] - 1;   // mid左边长度为F[k - 1] - 1, mid的索引为 low + F[k - 1] - 1
             if(value < temp[mid]) {   // 左边长度为 low + F[k - 1] - 1 = low + F[k - 2] + F[k - 3] - 1  ==>  F[k - 1] - 1 =
-                                      // F[k - 2] -1 + 1 + F[k - 3] - 1  此时的索引为 min = low + F[k - 1] - 1 =  F[k - 2] -1 即k--
+                                      // F[k - 2] -1 + 1 + F[k - 3] - 1  此时的索引为 min = low + F[k - 2] - 1 =  F[k - 1 - 1] -1 即k--
                 high = mid - 1;
                 k -= 1;               // f[k-2] = f[k-3] + f[k-4], 索引为 F[k - 3] -1， 现在是f[k - 1] -1， 所以 k -= 2
             } else if (value > temp[mid]) {
