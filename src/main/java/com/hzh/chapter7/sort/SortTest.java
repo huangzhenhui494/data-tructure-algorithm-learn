@@ -1,9 +1,7 @@
-package com.hzh.chapter7;
+package com.hzh.chapter7.sort;
 
 import org.junit.Test;
-import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties;
 
-import javax.validation.constraints.Min;
 import java.util.Arrays;
 
 /**
