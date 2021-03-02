@@ -1,4 +1,4 @@
-package com.hzh.chapter5.stacklinkedlist;
+package com.hzh.chapter5.stack.stacklinkedlist;
 
 /**
  * @description:

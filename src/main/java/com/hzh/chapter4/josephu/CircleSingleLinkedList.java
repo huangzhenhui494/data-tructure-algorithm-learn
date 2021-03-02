@@ -1,6 +1,4 @@
-package com.hzh.chapter4;
-
-import java.util.Currency;
+package com.hzh.chapter4.josephu;
 
 /**
  * @description: 环形单向链表

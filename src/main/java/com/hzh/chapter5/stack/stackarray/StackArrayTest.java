@@ -1,4 +1,4 @@
-package com.hzh.chapter5.stackarray;
+package com.hzh.chapter5.stack.stackarray;
 
 import java.util.Scanner;
 

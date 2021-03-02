@@ -1,4 +1,4 @@
-package com.hzh.chapter5.Infix;
+package com.hzh.chapter5.stack.Infix;
 
 import java.util.ArrayList;
 import java.util.Collections;

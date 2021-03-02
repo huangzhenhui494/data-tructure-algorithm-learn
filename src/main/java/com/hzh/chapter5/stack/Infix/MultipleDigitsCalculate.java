@@ -1,4 +1,4 @@
-package com.hzh.chapter5.Infix;
+package com.hzh.chapter5.stack.Infix;
 
 import java.math.BigDecimal;
 import java.util.Stack;

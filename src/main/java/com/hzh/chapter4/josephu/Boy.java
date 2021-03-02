@@ -1,4 +1,4 @@
-package com.hzh.chapter4;
+package com.hzh.chapter4.josephu;
 
 /**
  * @description:

@@ -1,28 +1,28 @@
-package com.hzh.chapter5.stackarray;
+package com.hzh.chapter5.stack.stackarray;
 
 /**
  * @description:
  * @Author huangzhenhui
  * @Date 2021/2/22 9:28
  */
-public class StackArray2 {
+public class StackArray {
 
     private int top;
 
     private int maxSize;
 
-    private char[] stack;
+    private int[] stack;
 
-    public StackArray2(int maxSize) {
+    public StackArray(int maxSize) {
         this.maxSize = maxSize;
         this.top = -1;
-        this.stack = new char[maxSize];
+        this.stack = new int[maxSize];
     }
 
     /**
      * 入栈
      */
-    public void push(char element) {
+    public void push(int element) {
         if (isFull()) {
             throw new IndexOutOfBoundsException("栈满了");
         }
@@ -34,11 +34,11 @@ public class StackArray2 {
      * 出栈
      * @return
      */
-    public char pop() {
+    public int pop() {
         if (isEmpty()) {
             throw new IndexOutOfBoundsException("empty");
         }
-        char temp = stack[top];
+        int temp = stack[top];
         top--;
         return temp;
     }
@@ -64,7 +64,7 @@ public class StackArray2 {
         return top == -1;
     }
 
-    public char getTop() {
+    public int getTop() {
         return stack[top];
     }
 }

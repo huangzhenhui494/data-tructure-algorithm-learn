@@ -1,7 +1,7 @@
-package com.hzh.chapter5.Infix;
+package com.hzh.chapter5.stack.Infix;
 
-import com.hzh.chapter5.stackarray.StackArray;
-import com.hzh.chapter5.stackarray.StackArray2;
+import com.hzh.chapter5.stack.stackarray.StackArray;
+import com.hzh.chapter5.stack.stackarray.StackArray2;
 
 import java.util.Stack;
 
