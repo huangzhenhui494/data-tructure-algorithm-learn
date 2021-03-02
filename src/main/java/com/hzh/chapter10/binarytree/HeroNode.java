@@ -172,4 +172,29 @@ public class HeroNode {
         }
         return null;
     }
+
+    /**
+     * 递归删除节点 - 所有和no相同的节点, 不是单个
+     * @param no
+     */
+    public void deleteNode(int no) {
+        // 如果左节点不为空且左节点为要删除节点, 则左节点删除
+        if (this.left != null && this.left.no == no) {
+            this.left = null;
+            return;
+        }
+        // 如果右节点不为空且右节点为要删除节点, 则右节点删除
+        if (this.right != null && this.right.no == no) {
+            this.right = null;
+            return;
+        }
+        // 左子树递归删除
+        if (this.left != null) {
+            this.left.deleteNode(no);
+        }
+        // 右子树递归删除
+        if (this.right != null) {
+            this.right.deleteNode(no);
+        }
+    }
 }

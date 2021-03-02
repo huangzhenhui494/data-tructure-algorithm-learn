@@ -77,7 +77,23 @@ public class BinaryTree {
         return this.root.postOrderSearch(no);
     }
 
+    /**
+     *
+     * @param no
+     */
+    public void deleteNode(int no) {
+        isEmpty();
+        System.out.println("删除节点");
+        // 如果只有一个 root 结点, 这里立即判断 root 是不是就是要删除结点
+        if (this.root.getNo() == no) {
+            this.root = null;
+            return;
+        }
+        // 递归删除
+        this.root.deleteNode(no);
+    }
+
     private void isEmpty() {
-        if(root == null) throw new RuntimeException("二叉树为空, 无法遍历");
+        if(root == null) throw new RuntimeException("二叉树为空");
     }
 }

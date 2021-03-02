@@ -16,7 +16,7 @@ public class BinaryTreeTest {
         HeroNode hero4 = new HeroNode(4, "武松");
         HeroNode hero5 = new HeroNode(5, "林冲");
         HeroNode hero6 = new HeroNode(6, "宋江");
-        HeroNode hero7 = new HeroNode(7, "吴用");
+        HeroNode hero7 = new HeroNode(3, "吴用");
         HeroNode hero8 = new HeroNode(8, "花荣");
         HeroNode hero9 = new HeroNode(9, "鲁智深");
 
@@ -34,7 +34,17 @@ public class BinaryTreeTest {
 //        binaryTree.preOrder();
 //        binaryTree.postOrder();
 //        binaryTree.infixOrder();
-
+/**
+ *
+ *              1
+ *            2   5
+ *           3 4 6 7
+ *          8 9
+ *
+ *
+ *
+ *
+ */
         // 中序遍历
         //HeroNode{no=8, name='花荣'}
         //HeroNode{no=3, name='索超'}
@@ -46,9 +56,10 @@ public class BinaryTreeTest {
         //HeroNode{no=5, name='林冲'}
         //HeroNode{no=7, name='吴用'}
 
-        HeroNode heroNode1 = binaryTree.postOrderSearch(10);
-        System.out.println(heroNode1);
-
+//        binaryTree.deleteNode(3);
+//        HeroNode heroNode1 = binaryTree.postOrderSearch(10);
+        binaryTree.deleteNode(3);
+        System.out.println(binaryTree);
     }
 
 }
