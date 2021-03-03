@@ -94,10 +94,10 @@ public class HeroNode {
     public void postOrder() {
         // 根节点在后
         if (this.left != null) {
-            this.left.preOrder();
+            this.left.postOrder();
         }
         if (this.right != null) {
-            this.right.preOrder();
+            this.right.postOrder();
         }
         System.out.println(this);
     }
