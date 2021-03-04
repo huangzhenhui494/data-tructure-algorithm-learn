@@ -51,10 +51,32 @@ public class ThreadBinaryTree {
 
     /**
      * 前序线索化
+     * 1 3 8 10 6 14
      * @param node
      */
     private void preThreadOrder(HeroNode node) {
 
+        // node为null吧不能线索化
+        if (node == null) {
+            return;
+        }
+        // 后继节点和前一个节点的前驱
+        if (node.getLeft() == null) {
+            node.setLeft(pre);
+            node.setLeftType(1);
+        }
+        // pre = 6时,  原来的节点6.left=14, 如果6.right也=14, 线索化右子树时会进入死循环
+        if (pre != null && pre.getRight() == null && pre.getLeft() != node) {
+            pre.setRight(node);
+            pre.setRightType(1);
+        }
+        pre = node;
+        // node.getLeftType()==0是为了避免出现死循环
+        if (node.getLeftType() == 0) {
+            preThreadOrder(node.getLeft());
+        }
+        // 线索化右子树
+        preThreadOrder(node.getRight());
     }
 
     /**
@@ -79,10 +101,13 @@ public class ThreadBinaryTree {
         // 处理当前节点的前驱节点, leftType = 1表示节点
         if (node.getLeft() == null) {
             node.setLeft(pre);
+            // 1代表指向前驱节点
+            node.setLeftType(1);
         }
         // 处理上一个节点的后继节点
         if (pre != null && pre.getRight() == null) {
             pre.setRight(node);
+            pre.setRightType(1);
         }
         // 当前节点设置为下一个节点的前驱节点
         pre = node;
@@ -93,9 +118,33 @@ public class ThreadBinaryTree {
 
     /**
      * 后序线索化
+     *          1
+     *      3      6
+     *    8  10  14
+     *
+     *  后序: 8 10 3 14 6 1
      * @param node
      */
     private void postThreadOrder(HeroNode node) {
 
+        // 如果node == null, 不能线索化
+        if (node == null) {
+            return;
+        }
+        // 线索化左子树
+        postThreadOrder(node.getLeft());
+        // 线索化右子树
+        postThreadOrder(node.getRight());
+
+        // 处理前驱节点和上一个节点的后继节点
+        if (node.getLeft() == null) {
+            node.setLeft(pre);
+            node.setLeftType(1);
+        }
+        if (pre != null && pre.getRight() == null) {
+            pre.setRight(node);
+            pre.setRightType(1);
+        }
+        pre = node;
     }
 }
