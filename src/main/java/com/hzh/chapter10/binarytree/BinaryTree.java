@@ -78,7 +78,7 @@ public class BinaryTree {
     }
 
     /**
-     *
+     * 删除节点,非叶子节点全删除
      * @param no
      */
     public void deleteNode(int no) {

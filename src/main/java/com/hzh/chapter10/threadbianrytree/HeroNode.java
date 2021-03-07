@@ -75,4 +75,14 @@ public class HeroNode {
     public void setRightType(int rightType) {
         this.rightType = rightType;
     }
+
+    @Override
+    public String toString() {
+        return "HeroNode{" +
+                "no=" + no +
+                ", name='" + name + '\'' +
+                ", leftType=" + leftType +
+                ", rightType=" + rightType +
+                '}';
+    }
 }

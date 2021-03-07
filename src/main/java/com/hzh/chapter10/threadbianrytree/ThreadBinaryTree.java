@@ -1,5 +1,9 @@
 package com.hzh.chapter10.threadbianrytree;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
+import java.rmi.NotBoundException;
+
 /**
  * @description:
  * @Author huangzhenhui
@@ -19,6 +23,29 @@ public class ThreadBinaryTree {
      */
     public void setRoot(HeroNode root) {
         this.root = root;
+    }
+
+    /**
+     * 中序遍历
+     */
+    public void infixThreadList() {
+
+        HeroNode node = root;
+        while (node != null) {
+            // 先找到最左节点即当leftType = 1时的节点
+            while (node.getLeftType() == 0) {
+                node = node.getLeft();
+            }
+            // 输出节点
+            System.out.println(node);
+            // 输出后继节点
+            while (node.getRightType() == 1) {
+                node = node.getRight();
+                System.out.println(node);
+            }
+            // 后继节点输出完毕找到下一个节点
+            node = node.getRight();
+        }
     }
 
     /**

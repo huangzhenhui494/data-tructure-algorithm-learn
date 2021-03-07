@@ -27,9 +27,11 @@ public class ThreadBinaryTreeTest {
         //测试中序线索化
         ThreadBinaryTree threadBinaryTree = new ThreadBinaryTree();
         threadBinaryTree.setRoot(root);
-//        threadBinaryTree.infixThreadOrder();
+        threadBinaryTree.infixThreadOrder();
+        threadBinaryTree.infixThreadList();
+
 //        threadBinaryTree.preThreadOrder();
-        threadBinaryTree.postThreadOrder();
+//        threadBinaryTree.postThreadOrder();
 
     }
 }

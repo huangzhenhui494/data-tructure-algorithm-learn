@@ -1,7 +1,7 @@
 package com.hzh.chapter9.hashtable;
 
 /**
- * @description:
+ * @description: 哈希表(散列) 数据结构
  * @Author huangzhenhui
  * @Date 2021/3/1 13:42
  */
