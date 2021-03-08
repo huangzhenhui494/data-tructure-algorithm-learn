@@ -1,9 +1,7 @@
 package com.hzh.chapter7.sort;
 
 import org.junit.Test;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 
-import java.net.StandardSocketOptions;
 import java.util.Arrays;
 
 /**
@@ -42,7 +40,7 @@ public class HeapSort {
     }
 
     /**
-     * 堆排序
+     * 堆排序-自己画圈, 从arr.length / 2 - 1开始, 从右到左从下到上画圈
      * @param arr
      */
     public static void heapSort(int[] arr) {
