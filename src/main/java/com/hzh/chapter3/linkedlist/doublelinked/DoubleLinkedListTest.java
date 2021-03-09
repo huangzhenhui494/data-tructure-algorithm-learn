@@ -11,7 +11,7 @@ public class DoubleLinkedListTest {
 
     static {
         doubleLinkedList = new DoubleLinkedList();
-        // 先创建几个节点
+        // 先创建几个结点
         DoubleHeroNode hero1 = new DoubleHeroNode(1, "柴进", "小旋风");
         DoubleHeroNode hero2 = new DoubleHeroNode(2, "卢俊义", "玉麒麟");
         DoubleHeroNode hero3 = new DoubleHeroNode(3, "索超", "急先锋");
@@ -42,7 +42,7 @@ public class DoubleLinkedListTest {
 //        doubleLinkedList.showList();
 
         doubleLinkedList = new DoubleLinkedList();
-// 先创建几个节点
+// 先创建几个结点
         DoubleHeroNode hero1 = new DoubleHeroNode(5, "柴进", "小旋风");
         DoubleHeroNode hero2 = new DoubleHeroNode(3, "卢俊义", "玉麒麟");
         DoubleHeroNode hero3 = new DoubleHeroNode(7, "索超", "急先锋");

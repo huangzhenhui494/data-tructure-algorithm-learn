@@ -1,17 +1,17 @@
 package com.hzh.chapter11.huffmantree;
 
  /**
- * @description: 节点
+ * @description: 结点
  * @Author huangzhenhui
  * @Date 2021/3/9 6:45
  */
 public class Node implements Comparable<Node> {
 
-    private int value; // 节点权值
+    private int value; // 结点权值
 
-    private Node left; // 指向左子节点
+    private Node left; // 指向左子结点
 
-    private Node right; // 指向右子节点
+    private Node right; // 指向右子结点
 
     public Node(int value) {
         this.value = value;

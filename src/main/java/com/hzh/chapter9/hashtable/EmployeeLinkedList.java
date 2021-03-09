@@ -8,7 +8,7 @@ package com.hzh.chapter9.hashtable;
 public class EmployeeLinkedList {
 
     /**
-     * 第一个就是员工, 没有头节点
+     * 第一个就是员工, 没有头结点
      */
     private Employee head;
 

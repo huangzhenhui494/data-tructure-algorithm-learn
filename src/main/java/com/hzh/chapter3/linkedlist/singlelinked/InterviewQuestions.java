@@ -10,8 +10,8 @@ import org.junit.Test;
 public class InterviewQuestions {
 
     /**
-     * 1 求单链表中有效节点的个数
-     * 2 查找单链表中的倒数第k个节点
+     * 1 求单链表中有效结点的个数
+     * 2 查找单链表中的倒数第k个结点
      * 3 单链表的反转
      * 4 从尾到头打印单链表  要求方式1:反向遍历, 方式2: stack栈
      * 5 合并两个有序的单链表, 合并之后的链表依然有序
@@ -20,7 +20,7 @@ public class InterviewQuestions {
     private static SingleLinkedList singleLinkedList;
 
     static {
-        // 先创建几个节点
+        // 先创建几个结点
         HeroNode hero1 = new HeroNode(5, "柴进", "小旋风");
         HeroNode hero2 = new HeroNode(2, "卢俊义", "玉麒麟");
         HeroNode hero3 = new HeroNode(8, "索超", "急先锋");
@@ -46,7 +46,7 @@ public class InterviewQuestions {
     }
 
     /**
-     * 求单链表中有效节点的个数
+     * 求单链表中有效结点的个数
      */
     @Test
     public void test1() {
@@ -54,7 +54,7 @@ public class InterviewQuestions {
     }
 
     /**
-     * 查找单链表中的倒数第k个节点
+     * 查找单链表中的倒数第k个结点
      */
     @Test
     public void test2() {
@@ -95,7 +95,7 @@ public class InterviewQuestions {
     @Test
     public void test5() {
         singleLinkedList = new SingleLinkedList();
-        // 先创建几个节点
+        // 先创建几个结点
         HeroNode hero1 = new HeroNode(1, "柴进", "小旋风");
         HeroNode hero2 = new HeroNode(3, "卢俊义", "玉麒麟");
         HeroNode hero3 = new HeroNode(5, "索超", "急先锋");
@@ -113,7 +113,7 @@ public class InterviewQuestions {
 
 
         SingleLinkedList singleLinkedList1 = new SingleLinkedList();
-        // 先创建几个节点
+        // 先创建几个结点
         HeroNode hero11 = new HeroNode(2, "柴进2", "小旋风2");
         HeroNode hero12 = new HeroNode(4, "卢俊义2", "玉麒麟2");
         HeroNode hero13 = new HeroNode(5, "索超2", "急先锋2");

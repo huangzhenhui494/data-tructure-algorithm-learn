@@ -3,7 +3,7 @@ package com.hzh.chapter6.recursion;
 import java.util.Arrays;
 
 /**
- * @description: 把将要走的节点赋值为此节点值+1，走过的路径也可以重复行走。条件是本节点值+1必须小于已走过的节点的值(墙不能走)，这样遍历所有的节点，便可以记录最短的路径。
+ * @description: 把将要走的结点赋值为此结点值+1，走过的路径也可以重复行走。条件是本结点值+1必须小于已走过的结点的值(墙不能走)，这样遍历所有的结点，便可以记录最短的路径。
  * @Author huangzhenhui
  * @Date 2021/2/23 15:45
  */
