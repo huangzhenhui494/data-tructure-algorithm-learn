@@ -9,7 +9,7 @@ public class Boy {
 
     private int no;
 
-    private Boy next; // 指向下一个结点, 默认null
+    private Boy next; // 指向下一个节点, 默认null
 
     public Boy(int no) {
         this.no = no;

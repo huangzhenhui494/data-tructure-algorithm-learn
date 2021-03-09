@@ -10,9 +10,9 @@ public class ArrBinaryTree {
     /**
      * 顺序存储二叉树的特点:
      * 1) 顺序二叉树通常只考虑完全二叉树
-     * 2) 第 n 个元素的左子结点为 2 * n + 1
-     * 3) 第 n 个元素的右子结点为 2 * n + 2
-     * 4) 第 n 个元素的父结点为 (n-1) / 2
+     * 2) 第 n 个元素的左子节点为 2 * n + 1
+     * 3) 第 n 个元素的右子节点为 2 * n + 2
+     * 4) 第 n 个元素的父节点为 (n-1) / 2
      * 5) n : 表示二叉树中的第几个元素(按 0 开始编号如图所示)
      */
     private int[] arr; // 存储数据结点的数组
@@ -58,7 +58,7 @@ public class ArrBinaryTree {
      * @param index
      */
     private void preOrder(int index) {
-        // 输出当前结点元素
+        // 输出当前节点元素
         System.out.println(arr[index]);
         // 1, 2, 3, 4, 5, 6, 7}
         /**
@@ -88,7 +88,7 @@ public class ArrBinaryTree {
         if((2 * index + 1) < arr.length) {
             infixOrder((2 * index + 1));
         }
-        // 打印结点
+        // 打印节点
         System.out.println(arr[index]);
         // 向右查找
         if ((2 * index + 2) < arr.length) {
@@ -111,7 +111,7 @@ public class ArrBinaryTree {
         if ((2 * index + 2) < arr.length) {
             postOrder((2 * index + 2));
         }
-        // 打印结点
+        // 打印节点
         System.out.println(arr[index]);
     }
 }

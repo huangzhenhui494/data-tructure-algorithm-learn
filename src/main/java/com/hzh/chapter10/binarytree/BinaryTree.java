@@ -8,7 +8,7 @@ package com.hzh.chapter10.binarytree;
 public class BinaryTree {
 
     /**
-     * 根结点
+     * 根节点
      */
     private HeroNode root;
 
@@ -17,7 +17,7 @@ public class BinaryTree {
     }
 
     /**
-     * 前序遍历(根结点在前)
+     * 前序遍历(根节点在前)
      * 前序遍历首先访问根结点然后遍历左子树，最后遍历右子树
      * 在遍历左、右子树时，仍然先访问 根结点，然后遍历左子树，最后遍历右子树
      */
@@ -28,7 +28,7 @@ public class BinaryTree {
     }
 
     /**
-     * 中序遍历(根结点在中)
+     * 中序遍历(根节点在中)
      * 中序遍历首先遍历左子树，然后访问根结点，最后遍历右子树
      */
     public void infixOrder() {
@@ -38,7 +38,7 @@ public class BinaryTree {
     }
 
     /**
-     * 后序遍历(根结点在后)
+     * 后序遍历(根节点在后)
      * 后序遍历首先遍历左子树，然后遍历右子树，最后访问根结点，在遍历左、右子树时，仍然先遍历左子树，然后遍历右子树，最后遍历根结点。
      */
     public void postOrder() {
@@ -78,12 +78,12 @@ public class BinaryTree {
     }
 
     /**
-     * 删除结点,非叶子结点全删除
+     * 删除节点,非叶子节点全删除
      * @param no
      */
     public void deleteNode(int no) {
         isEmpty();
-        System.out.println("删除结点");
+        System.out.println("删除节点");
         // 如果只有一个 root 结点, 这里立即判断 root 是不是就是要删除结点
         if (this.root.getNo() == no) {
             this.root = null;

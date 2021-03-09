@@ -7,7 +7,7 @@ package com.hzh.chapter4.josephu;
  */
 public class CircleSingleLinkedList {
 
-    // 创建一个first结点,当前没有编号
+    // 创建一个first节点,当前没有编号
     private Boy first = null;
 
     /**
@@ -22,7 +22,7 @@ public class CircleSingleLinkedList {
         Boy curBoy = null;
         // 使用for来创建我们的环形链表
         for(int i = 1; i <= nums; i++) {
-            // 根据编号创建小孩结点
+            // 根据编号创建小孩节点
             Boy boy = new Boy(i);
             // 如果是第一个小孩
             if (i == 1) {
@@ -67,7 +67,7 @@ public class CircleSingleLinkedList {
         }
         // 创建要给辅助指针, 帮助完成小孩出圈
         Boy helper = first;
-        // ① 需要创建一个辅助指针(变量)helper, 事先应该指向环形链表的最后这个结点
+        // ① 需要创建一个辅助指针(变量)helper, 事先应该指向环形链表的最后这个节点
         while (helper.getNext() != first) {
             helper = helper.getNext();
         }
@@ -82,7 +82,7 @@ public class CircleSingleLinkedList {
                 first = first.getNext();
                 helper = helper.getNext();
             }
-            // 这时first指向的结点, 就是要出圈的小孩结点
+            // 这时first指向的节点, 就是要出圈的小孩节点
             System.out.println(first);
             first = first.getNext();
             helper.setNext(first);

@@ -64,7 +64,7 @@ public class HeroNode {
      * 前序遍历
      */
     public void preOrder() {
-        // 根结点在前
+        // 根节点在前
         System.out.println(this);
         if (this.left != null) {
             this.left.preOrder();
@@ -78,7 +78,7 @@ public class HeroNode {
      * 中序遍历
      */
     public void infixOrder() {
-        // 根结点在中
+        // 根节点在中
         if (this.left != null) {
             this.left.infixOrder();
         }
@@ -92,7 +92,7 @@ public class HeroNode {
      * 后序遍历
      */
     public void postOrder() {
-        // 根结点在后
+        // 根节点在后
         if (this.left != null) {
             this.left.postOrder();
         }
@@ -108,7 +108,7 @@ public class HeroNode {
      * @param no
      */
     public HeroNode preOrderSearch(int no) {
-        // 找到结点返回
+        // 找到节点返回
         if(this.no == no) {
             return this;
         }
@@ -174,16 +174,16 @@ public class HeroNode {
     }
 
     /**
-     * 递归删除结点 - 所有和no相同的结点, 不是单个
+     * 递归删除节点 - 所有和no相同的节点, 不是单个
      * @param no
      */
     public void deleteNode(int no) {
-        // 如果左结点不为空且左结点为要删除结点, 则左结点删除
+        // 如果左节点不为空且左节点为要删除节点, 则左节点删除
         if (this.left != null && this.left.no == no) {
             this.left = null;
             return;
         }
-        // 如果右结点不为空且右结点为要删除结点, 则右结点删除
+        // 如果右节点不为空且右节点为要删除节点, 则右节点删除
         if (this.right != null && this.right.no == no) {
             this.right = null;
             return;

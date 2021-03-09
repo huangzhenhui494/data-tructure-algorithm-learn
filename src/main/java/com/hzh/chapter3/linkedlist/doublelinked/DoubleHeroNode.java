@@ -13,9 +13,9 @@ public class DoubleHeroNode {
 
     public String nickname;
 
-    public DoubleHeroNode pre;  // 指向下一个结点, 默认为null
+    public DoubleHeroNode pre;  // 指向下一个节点, 默认为null
 
-    public DoubleHeroNode next; // 指向前一个结点, 默认为null
+    public DoubleHeroNode next; // 指向前一个节点, 默认为null
 
     public DoubleHeroNode(int no, String name, String nickname) {
         this.no = no;

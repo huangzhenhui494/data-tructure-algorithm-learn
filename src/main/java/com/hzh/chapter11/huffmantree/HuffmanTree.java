@@ -35,7 +35,7 @@ public class HuffmanTree {
         while (nodes.size() > 1) {
             // ① 从小到大排序
             nodes.sort(Comparator.comparingInt(Node::getValue)); // 或者实现Comparable Collections.sort(nodes);
-            // ② 取出根结点权值最小的两颗二叉树, 最小和第二小
+            // ② 取出根节点权值最小的两颗二叉树, 最小和第二小
             Node left = nodes.get(0);
             Node right = nodes.get(1);
             // ③ 构建一颗新的二叉树
@@ -45,7 +45,7 @@ public class HuffmanTree {
             nodes.remove(right);
             nodes.add(parent);
         }
-        // 返回赫夫曼树的root结点
+        // 返回赫夫曼树的root节点
         return nodes.get(0);
     }
 

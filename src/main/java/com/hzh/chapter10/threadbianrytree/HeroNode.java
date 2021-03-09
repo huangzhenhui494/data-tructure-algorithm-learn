@@ -11,10 +11,10 @@ public class HeroNode {
 
     private String name;
 
-    /** 左结点, 默认null */
+    /** 左节点, 默认null */
     private HeroNode left;
 
-    /** 右结点, 默认null */
+    /** 右节点, 默认null */
     private HeroNode right;
 
     /** 如果 leftType == 0 表示指向的是左子树, 如果 1 则表示指向前驱结点 */
