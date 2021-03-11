@@ -45,7 +45,10 @@ public class BinarySortTree {
                 parentNode.setRight(null);  // 这边就剩下右子节点了, 不可能右也是空的, 那样的话target就是root了
             }
         } else if (targetNode.getLeft() != null && targetNode.getRight() != null) { // ② 删除有两颗子树的节点
-
+            // 获取该节点右树最小值
+            int minVal = delRightTreeMin(targetNode.getRight());
+            // 替换该节点的值
+            targetNode.setValue(minVal);
 
         } else { // ③ 删除只有一颗子树的节点
             // 如果targetNode有左子节点, targetNode的左子节点替代targetNode的位置
@@ -69,6 +72,21 @@ public class BinarySortTree {
         }
 
 
+    }
+
+    /**
+     * 获取当前节点右子树的最小值并删除该节点
+     * @param node
+     * @return
+     */
+    private int delRightTreeMin(Node node) {
+        Node temp = node;
+        while (temp.getLeft() != null) {
+            temp = temp.getLeft();
+        }
+        // 删除该最小节点
+        delNode(temp.getValue());
+        return temp.getValue();
     }
 
     /**

@@ -36,7 +36,7 @@ public class BinarySortTreeTest {
 //        System.out.println("-------------------");
 //        binarySortTree.infixOrder();
 
-        binarySortTree.delNode(1);
+        binarySortTree.delNode(12);
         binarySortTree.infixOrder();
     }
 
