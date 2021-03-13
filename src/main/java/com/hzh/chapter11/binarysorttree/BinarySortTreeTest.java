@@ -9,6 +9,13 @@ import org.junit.Test;
  */
 public class BinarySortTreeTest {
 
+    /**
+     *
+     *               7
+     *        3            10
+     *     1      5     9         12
+     *          2
+     */
     @Test
     public void test1() {
         int[] arr = {7, 3, 10, 12, 5, 1, 9, 2};
@@ -35,8 +42,14 @@ public class BinarySortTreeTest {
 //        binarySortTree.delNode(3);
 //        System.out.println("-------------------");
 //        binarySortTree.infixOrder();
-
+        binarySortTree.delNode(2);
+        binarySortTree.delNode(5);
+        binarySortTree.delNode(9);
         binarySortTree.delNode(12);
+        binarySortTree.delNode(7);
+        binarySortTree.delNode(3);
+        binarySortTree.delNode(10);
+        binarySortTree.delNode(1);
         binarySortTree.infixOrder();
     }
 

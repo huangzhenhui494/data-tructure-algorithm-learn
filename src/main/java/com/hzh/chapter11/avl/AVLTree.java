@@ -1,18 +1,24 @@
-package com.hzh.chapter11.binarysorttree;
-
-import java.util.concurrent.TransferQueue;
+package com.hzh.chapter11.avl;
 
 /**
  * @description:
  * @Author huangzhenhui
- * @Date 2021/3/10 22:00
+ * @Date 2021/3/13 7:09
  */
-public class BinarySortTree {
+public class AVLTree {
+
 
     private Node root;
 
     public Node getRoot() {
         return root;
+    }
+
+    /**
+     * 左旋转
+     */
+    public void leftRotate(Node node) {
+        node.leftRotate();
     }
 
     /**
@@ -142,5 +148,4 @@ public class BinarySortTree {
         }
         root.infixOrder();
     }
-
 }
