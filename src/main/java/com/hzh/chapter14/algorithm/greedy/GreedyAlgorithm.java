@@ -57,6 +57,8 @@ public class GreedyAlgorithm {
         List<String> selects = new ArrayList<>();
         // 定义一个临时的集合, 在遍历的过程中, 存放遍历过程中的电台覆盖的地区和当前还没有覆盖的地区的交集
         Set<String> tempSet = new HashSet<>();
+        // 定义一个比较集合, tempSet和当前电台比较时, 当前电台也要和未选地区取交集
+        Set<String> compareSet = new HashSet<>();
         // 最大值交集的电台key
         String maxKey = null;
 
@@ -65,11 +67,20 @@ public class GreedyAlgorithm {
             maxKey = null;
             // 遍历电台
             for (String key : broadcasts.keySet()) {
-                tempSet = broadcasts.get(key);
-                tempSet.retainAll(allAreas); // 临时集合和所有剩下的未选的地区去交集, 因为取交集会影响数据
-                if (tempSet.size() > 0 &&
-                        (broadcasts.get(maxKey) == null || tempSet.size() > broadcasts.get(maxKey).size())) {
-                    maxKey = key;
+                tempSet.clear();
+                compareSet.clear();
+                tempSet.addAll(broadcasts.get(key)); // ***不能用引用, 每次循环需要clear
+                tempSet.retainAll(allAreas); // 临时集合和所有剩下的未选的地区去交集, 记住这边不能直接引用retainAll, 会影响broadcasts的数据
+                if (tempSet.size() > 0) {
+                    if (broadcasts.get(maxKey) == null) { // 没有则maxKey取当前
+                        maxKey = key;
+                    } else { // 注意比较上一个 broadcasts.get(maxKey).size() 的时候也是需要取交集
+                        compareSet.addAll(broadcasts.get(maxKey));
+                        compareSet.retainAll(allAreas);
+                        if (tempSet.size() > compareSet.size()) {
+                            maxKey = key;
+                        }
+                    }
                 }
             }
             // maxKey != null, 则将maxKey加入到selects中
