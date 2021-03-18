@@ -3,7 +3,7 @@ package com.hzh.chapter14.algorithm.prim;
 import org.junit.Test;
 
 /**
- * @description:
+ * @description: 普里姆算法
  * @Author huangzhenhui
  * @Date 2021/3/17 21:00
  */
@@ -31,7 +31,7 @@ public class PrimAlgorithm {
 //        minTree.printGraph();
         minTree.prim(5);
 
-
+        // TODO https://blog.csdn.net/qq_38415505/article/details/83687207
 
     }
 
