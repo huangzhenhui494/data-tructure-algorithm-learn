@@ -1,8 +1,11 @@
 package com.hzh.chapter14.algorithm.horse;
 
+import org.junit.Test;
+
 import java.awt.*;
-import java.net.StandardProtocolFamily;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * @description:
@@ -31,6 +34,48 @@ public class HorseChessboard {
      */
     private static boolean finished;
 
+    public static void main(String[] args) {
+        // 测试骑士周游算法
+        X = 8;
+        Y = 8;
+        int row = 1; // 马儿初始位置的行, 从1开始
+        int column = 1; // 马儿初始位置的列, 从1开始
+        // 创建棋盘
+        int[][] chessBoard = new int[X][Y];
+        visited = new boolean[X * Y]; // 初始值都是false
+        // 测试耗时
+        long start = System.currentTimeMillis();
+        traversalChessborad(chessBoard, row - 1, column - 1, 1);
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);  // 25040
+        for (int[] ints : chessBoard) {
+            System.out.println(Arrays.toString(ints));
+        }
+    }
+
+    /**
+     * 贪心算法优化
+     */
+    @Test
+    public void test() {
+        // 测试骑士周游算法
+        X = 8;
+        Y = 8;
+        int row = 1; // 马儿初始位置的行, 从1开始
+        int column = 1; // 马儿初始位置的列, 从1开始
+        // 创建棋盘
+        int[][] chessBoard = new int[X][Y];
+        visited = new boolean[X * Y]; // 初始值都是false
+        // 测试耗时
+        long start = System.currentTimeMillis();
+        traversalChessborad2(chessBoard, row - 1, column - 1, 1);
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);  // 25040
+        for (int[] ints : chessBoard) {
+            System.out.println(Arrays.toString(ints));
+        }
+    }
+
     /**
      * 完成骑士周游问题的算法
      * @param chessBoard 棋盘
@@ -49,6 +94,42 @@ public class HorseChessboard {
             // 判断该点是否已经访问过
             if(!visited[p.y * X + p.x]) {
                 traversalChessborad(chessBoard, p.y, p.x, step + 1);
+            }
+        }
+        // 判断马儿是否完成了任务, 使用step和应该走的步数比较, 如果没有达到数量, 则没有完成任务, 棋盘置0
+        /*
+        说明: step < X * Y 成立的情况有两种
+        1.棋盘到目标位置但还没走完
+        2.棋盘处于一个回溯过程,  如果finished, 会一路绿灯直到所有方法出栈
+         */
+        if(step < X * Y && !finished) { // 未完成
+            chessBoard[row][column] = 0;
+            visited[row * X + column] = false;
+        } else {
+            finished = true;
+        }
+    }
+
+    /**
+     * 贪心算法优化
+     * @param chessBoard
+     * @param row
+     * @param column
+     * @param step
+     */
+    public static void traversalChessborad2(int[][] chessBoard, int row, int column, int step) {
+        chessBoard[row][column] = step;
+        visited[row * X + column] = true; // 标记该位置已经访问, 这边的X固定, 只是代表每行有8个
+        // 获取当前位置可以走的下一个位置的集合
+        ArrayList<Point> ps = next(new Point(column, row));
+        // 贪心算法, 优化, 对ps的所有Point对象的下一步的位置的数目进行非递减排序
+        sort(ps);
+        // 遍历ps
+        while (!ps.isEmpty()) {
+            Point p = ps.remove(0); // 取出下一个可以走的位置
+            // 判断该点是否已经访问过
+            if(!visited[p.y * X + p.x]) {
+                traversalChessborad2(chessBoard, p.y, p.x, step + 1);
             }
         }
         // 判断马儿是否完成了任务, 使用step和应该走的步数比较, 如果没有达到数量, 则没有完成任务, 棋盘置0
@@ -110,4 +191,18 @@ public class HorseChessboard {
         }
         return ps;
     }
+
+    /**
+     * 根据当前这一步的所有的下一步选择位置, 进行非递减排序
+     */
+    public static void sort(ArrayList<Point> points) {
+        // points.sort(Comparator.comparingInt(o -> next(o).size()));
+        points.sort(new Comparator<Point>() {
+            @Override
+            public int compare(Point o1, Point o2) {
+                return next(o1).size() - next(o2).size();
+            }
+        });
+    }
+
 }
